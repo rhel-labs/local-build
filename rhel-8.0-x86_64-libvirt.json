@@ -1,8 +1,10 @@
 {
   "variables": {
     "rhn_user": "{{env `RHN_USER`}}",
-    "rhn_pass": "{{env `RHN_PASS`}}"
+    "rhn_pass": "{{env `RHN_PASS`}}",
+    "target":  "rhel8"
   },
+  "sensitive-variables": ["rhn_user","rhn_pass"],
   "builders":
   [
     {
@@ -51,10 +53,10 @@
         "RHN_PASS={{user `rhn_pass`}}"
         ],
       "scripts": [
-        "build/1_enablerepos.sh",
-        "build/2_configure-standalone.sh",
-        "build/3_packages.sh",
-        "build/4_httpd.sh"
+        "environments/{{user `target`}}/build/1_enablerepos.sh",
+        "environments/{{user `target`}}/build/2_configure-standalone.sh",
+        "environments/{{user `target`}}/build/3_packages.sh",
+        "environments/{{user `target`}}/build/4_httpd.sh"
       ]
     }
   ]
