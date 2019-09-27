@@ -1,7 +1,7 @@
 # set -e
 
 echo "ENABLING REPOSITORIES"
-subscription-manager register --username $RHN_USER --password $RHN_PASS
+subscription-manager register --username $RHSM_USER --password $RHSM_PASS
 
 # Typical SKU PoolIDs / Names
 # Employee:             ES0113909 / 'Employee SKU'

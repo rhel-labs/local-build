@@ -1,10 +1,10 @@
 {
   "variables": {
-    "rhn_user": "{{env `RHN_USER`}}",
-    "rhn_pass": "{{env `RHN_PASS`}}",
+    "rhsm_user": "{{env `RHSM_USER`}}",
+    "rhsm_pass": "{{env `RHSM_PASS`}}",
     "target":  "rhel8"
   },
-  "sensitive-variables": ["rhn_user","rhn_pass"],
+  "sensitive-variables": ["rhsm_user","rhsm_pass"],
   "builders":
   [
     {
@@ -21,7 +21,7 @@
       "format": "qcow2",
       "net_device": "virtio-net",
 
-      "iso_url": "/home/mmicene/Projects/isos/rhel-8.0-x86_64-dvd.iso",
+      "iso_url": "/home/mmicene/VirtualMachines/rhel-8.0-x86_64-dvd.iso",
       "iso_checksum": "8a0bca1c323ad8628b09d0a7cce43f39",
       "iso_checksum_type": "md5",
 
@@ -49,8 +49,8 @@
       "pause_before": "5s",
       "execute_command": "chmod +x {{ .Path }};sudo {{ .Vars }} {{ .Path }}",
       "environment_vars": [
-        "RHN_USER={{user `rhn_user`}}",
-        "RHN_PASS={{user `rhn_pass`}}"
+        "RHSM_USER={{user `rhsm_user`}}",
+        "RHSM_PASS={{user `rhsm_pass`}}"
         ],
       "scripts": [
         "environments/{{user `target`}}/build/1_enablerepos.sh",

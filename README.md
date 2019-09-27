@@ -54,17 +54,17 @@ You may want to check the output and order of reporting if more than one pool ma
 
 The default image is the `rhel8` environment.  This is used for most of the labs.  Subscription credentials are passed via environment variables and masked from the log output, as follows:
 
-RHN_USER=<userid> RHN_PASS=<userpass>  ~/bin/packer build rhel-8.0-x86_64-libvirt.json
+RHSM_USER=<userid> RHSM_PASS=<userpass>  ~/bin/packer build rhel-8.0-x86_64-libvirt.json
 
 Set the variables with the user/pass combo for the portal account that has subscriptions you want to use.
 
-`RHN_USER=shadowman RHN_PASS=supersecret ~/bin/packer build rhel-8.0-x86_64-libvirt.json`
+`RHSM_USER=shadowman RHSM_PASS=supersecret ~/bin/packer build rhel-8.0-x86_64-libvirt.json`
 
 To build a different image from the environments directory, add `-var` and the directory name to the build command to override the default, e.g:
 
 -var 'target=<directory_name>'
 
-`RHN_USER=shadowman RHN_PASS=supersecret ~/bin/packer build -var 'target=rhel8-highmem' rhel-8.0-x86_64-libvirt.json`
+`RHSM_USER=shadowman RHSM_PASS=supersecret ~/bin/packer build -var 'target=rhel8-highmem' rhel-8.0-x86_64-libvirt.json`
 
 ## Launching an image
 
